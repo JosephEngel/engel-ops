@@ -1,0 +1,51 @@
+############################
+# Network Attached ks file #
+############################
+
+# Run Detached
+sudo virt-install --name=testA \
+--memory=1024 --vcpus=1 \
+--location=/home/joey/Documents/iso/CentOS-7-x86_64-DVD-1908.iso \
+--disk /var/lib/libvirt/images/testA.qcow2,device=disk,bus=virtio,size=15 \
+--network bridge:br0 \
+--os-type=generic \
+--nographics \
+--noautoconsole \
+--extra-args='ks=http://nginx.engelcc.com/ks.cfg console=tty0 console=ttyS0,115200n8 serial'
+
+# Run Attached
+sudo virt-install --name=testA \
+--memory=1024 --vcpus=1 \
+--location=/home/joey/Documents/iso/CentOS-7-x86_64-DVD-1908.iso \
+--disk /var/lib/libvirt/images/testA.qcow2,device=disk,bus=virtio,size=15 \
+--network bridge:br0 \
+--os-type=generic \
+--nographics \
+--extra-args='ks=http://nginx.engelcc.com/ks.cfg console=tty0 console=ttyS0,115200n8 serial'
+
+#################
+# Local ks file #
+#################
+
+# Run Detached
+sudo virt-install --name=ftest1 \
+--memory=4096 --vcpus=4 \
+--location=/home/joey/Documents/iso/Fedora-Workstation-Live-x86_64-31-1.9.iso \
+--disk /var/lib/libvirt/images/ftest1.qcow2,device=disk,bus=virtio,size=30 \
+--network bridge:br0 \
+--os-type=generic \
+--nographics \
+--noautoconsole \
+--initrd-inject=/tmp/ks.cfg \
+--extra-args='ks=file:/ks.cfg console=tty0 console=ttyS0,115200n8 serial'
+
+# Run Attached
+sudo virt-install --name=ftest1 \
+--memory=4096 --vcpus=4 \
+--location=/home/joey/Documents/iso/Fedora-Server-dvd-x86_64-31-1.9.iso \
+--disk /var/lib/libvirt/images/ftest1.qcow2,device=disk,bus=virtio,size=30 \
+--network bridge:br0 \
+--os-type=generic \
+--nographics \
+--initrd-inject=/tmp/ks.cfg \
+--extra-args='ks=file:/ks.cfg console=tty0 console=ttyS0,115200n8 serial'
