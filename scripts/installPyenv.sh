@@ -46,6 +46,8 @@ sudo dnf install -y ${depList}
 echo "-- Installing pyenv python --"
 echo "  - Running: pyenv install 3.7.6"
 pyenv install 3.7.6
+# Set global pyenv
+pyenv global 3.7.6
 
 # Install pyenv-virtualenv plugin
 echo "-- Installing pyenv-virtualenv plugin --"
