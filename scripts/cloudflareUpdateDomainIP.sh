@@ -51,7 +51,7 @@ function getRecordInfo () {
 }
 
 function updateRecordIP () {
-  curl -sX --output /dev/null PUT "https://api.cloudflare.com/client/v4/zones/${zoneID}/dns_records/${recordID}" -H "Authorization: Bearer ${apiKey}" -H "Content-Type: application/json" --data "{\"type\":\"A\",\"name\":\"${domain}\",\"content\":\"${getIP}\",\"ttl\":${recordTTL},\"proxied\":false}"
+  curl -sX PUT "https://api.cloudflare.com/client/v4/zones/${zoneID}/dns_records/${recordID}" -H "Authorization: Bearer ${apiKey}" -H "Content-Type: application/json" --data "{\"type\":\"A\",\"name\":\"${domain}\",\"content\":\"${getIP}\",\"ttl\":${recordTTL},\"proxied\":false}"
   checkRunStatus 1
 }
 
