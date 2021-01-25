@@ -71,8 +71,8 @@ gzip -9 /tmp/${fileDate}-firefoxProfile.tar
 checkRunStatus 1
 
 echo "Copying to Server:"
-echo "  - Running: scp /tmp/${fileDate}-firefoxProfile.tar.gz ${serverIP}:~/firefox-backups/"
-scp /tmp/${fileDate}-firefoxProfile.tar.gz ${serverIP}:~/firefox-backups/
+echo "  - Running: rsync /tmp/${fileDate}-firefoxProfile.tar.gz ${serverIP}:~/firefox-backups/"
+rsync /tmp/${fileDate}-firefoxProfile.tar.gz ${serverIP}:~/firefox-backups/
 checkRunStatus
 
 echo ""
