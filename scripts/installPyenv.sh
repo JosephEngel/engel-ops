@@ -36,7 +36,7 @@ else
 fi
 
 # Add pyenv init to shel to enable shims and autocompletion
-echo "-- Enabling shims and autocompletion --"
+echo "-- Enabling shims and autocompletion (.bashrc) --"
 if [[ $(cat ${pathFile} |grep -c 'if command -v pyenv') -ge 1 ]]; then
     echo "  - pyenv init already added. Skipping."
 else
@@ -63,6 +63,7 @@ else
     git clone https://github.com/pyenv/pyenv-virtualenv.git pyenv-virtualenv
 fi
 if [[ $(cat ${pathFile} |grep -c 'pyenv virtualenv-init') -lt 1 ]]; then
+    echo "    - Adding pyenv-virtualenv to path (.bashrc)"
     echo 'eval "\$(pyenv virtualenv-init -)"' >> ${pathFile}
 fi
 __EOF
