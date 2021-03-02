@@ -1,6 +1,6 @@
 #!/bin/bash
 #-- Install pyenv on Fedora/centos8
-user="joey"
+[[ -z $1 ]] && user="$1" || user="joey"
 repo="https://github.com/pyenv/pyenv.git"
 pathFile="/home/${user}/.bashrc"
 depList="make gcc zlib-devel bzip2 bzip2-devel readline-devel sqlite sqlite-devel openssl-devel tk-devel libffi-devel"
