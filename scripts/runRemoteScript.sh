@@ -3,9 +3,8 @@
 #-- Variables
 file="$1"
 hosts="$2"
-domain="$3"
+[[ -n $3 ]] && domain="$3" || domain="engelcc.com"
 user="joey"
-[[ -z $3 ]] && domain="engelcc.com"
 #-- Do Work
 if [[ -z $1 ]]; then
   echo "Error: must pass a script to run: $1. Exitting."
